@@ -63,6 +63,21 @@ const game = {
             else console.log(players[i]);;
         }
     }
+    // Functia restructurata, utilizand for-of:
+    printGoalsRestructured: function(...jucatori){
+        for(const [ ,i] of jucatori.entries()) {
+            if(game.scored.includes(i)) {
+                goalsCount = 0;
+                for(const [ ,j] of game.scored.entries()) {
+                    if(i === j) {
+                        goalsCount += 1
+                    }
+                }
+                console.log(`${i} scored ${goalsCount}`); 
+            }
+            else console.log(`${i} did not score this game.`)
+        }
+    }
 };
 
 const players1 = [];
@@ -76,3 +91,4 @@ console.log(fieldPlayers);
 console.log(allPlayers);
 
 game.printGoals('Lewandowski', 'Thiago', 'Gnarby', 'Hummels');
+game.printGoalsRestructured('Cristi', 'Lewandowski', 'Thiago', 'Gnarby', 'Hummels');
